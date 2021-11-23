@@ -1,15 +1,20 @@
 import React from 'react'
+import { useRacas } from '../../context/RacasContext'
+import { useSelecionaRaca } from '../../context/RacaSelecionadaContext';
 import './styles.scss'
 
-const ListaRacas = props => {
+function ListaRacas() {
+  const racas = useRacas();
+  const selecionaRaca = useSelecionaRaca();
+
   return (
     <ul className="lista-racas">
       {
-        props.racas.map(raca => (
+        racas.map(raca => (
           <li
             className="lista-racas__item"
             key={raca.id}
-            onClick={() => props.selecionaRaca(raca.name)}
+            onClick={() => selecionaRaca(raca.name)}
           >
             {raca.name}
           </li>
